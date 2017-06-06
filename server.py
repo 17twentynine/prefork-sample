@@ -8,6 +8,8 @@ from tornado.httpclient import AsyncHTTPClient
 
 count = 0
 
+data = range(10000)
+print "Loading data: %s" % len(data)
 
 class SleepHandler(tornado.web.RequestHandler):
     @tornado.web.asynchronous
@@ -34,6 +36,7 @@ class MainHandler(tornado.web.RequestHandler):
         self.write("Time: %s \n" % (datetime.datetime.now()))
         response = yield http_client.fetch("http://localhost:8008/sleep")
         self.write(response.body + "\n")
+        self.write("Len of data " + str(len(data)) + "\n")
 
         #time.sleep(5)
         self.write("Time: %s \n" % (datetime.datetime.now()))

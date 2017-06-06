@@ -1,10 +1,12 @@
 import os
 
 def post_fork(server, worker):
+    print "Client: " + globals()['a']
     print "Worker spawned (pid: %s)" % worker.pid
 
 def pre_fork(server, worker):
-    memory = 1024 * 1024 * 1024 * 2 * 'a'
+    #memory = 1024 * 1024 * 1024 * 2 * 'a'
+    globals()['a'] = 'abcdef'
     print "spawning Worker (worker: %s)" % worker
 
 def pre_exec(server):
@@ -25,4 +27,4 @@ bind = '0.0.0.0:8008'
 backlog = 2048
 debug = True
 worker_class = 'tornado'
-
+preload_app = True
