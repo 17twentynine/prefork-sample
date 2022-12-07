@@ -1,5 +1,5 @@
 backports-abc==0.5
-certifi==2017.4.17
+certifi==2022.12.7
 chardet==3.0.3
 foreman==0.9.7
 futures==3.1.1
